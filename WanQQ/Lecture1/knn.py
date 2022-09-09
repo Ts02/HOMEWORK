@@ -48,12 +48,11 @@ def train(TestSet,labelsTest,TrainSet,labelsTrain,k):
     length=TestSet.shape[0]+TrainSet.shape[0];
     correct = 0.0
     labelsForOutput = []
-    for d in Testset:
-        labelsForOutput.append(classify0(d, Trainset, labelsTrain, k))
+    for i in range(TestSet.shape[0]):
+        labelsForOutput.append(classify0(TestSet[i], Trainset, labelsTrain, k))
     for i in range(len(labelsForOutput)):
         if labelsForOutput[i] == labelsTest[i]:
             correct += 1
     return correct / len(labelsForOutput)  # 正确率
-if __name__=='__main__':
 
-    train(X_test,y_test,X_train,y_train);
+train(X_test,y_test,X_train,y_train);
